@@ -80,6 +80,17 @@ function Home(props) {
     });
   };
 
+  const onPressCancel = () => {
+    onChangeState({
+      ...state,
+      name: "",
+      age: "",
+      mobile: "",
+      isOpenContactForm: false,
+      selectedCard: null,
+    });
+  };
+
   const onDelete = (selectedIndex) => {
     let newList = contactList.filter((item, index) => index !== selectedIndex);
     onChangeState({
@@ -198,9 +209,7 @@ function Home(props) {
               <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() =>
-                onChangeState({...state, isOpenContactForm: false})
-              }
+              onPress={onPressCancel}
               style={styles.cancelBtn}>
               <Text style={styles.buttonText}>Cancel</Text>
             </TouchableOpacity>
